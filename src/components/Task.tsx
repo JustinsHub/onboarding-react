@@ -1,6 +1,8 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { TaskProps } from '../interfaces/todo.interface'
 import ToDoList from '../utils/api/todoListApi'
+import '../styles/globalTodo.css'
+import '../styles/tasks.css'
 
 
 const Task:React.FC<TaskProps> = ({id, title}) => {
@@ -45,19 +47,20 @@ const Task:React.FC<TaskProps> = ({id, title}) => {
                     <span>
                         {title}    
                     </span>
-                    <button onClick={handleEditToggle}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
+                    <button className="global-btn" onClick={handleEditToggle}>Edit</button>
+                    <button className="global-btn" onClick={handleDelete}>Delete</button>
                     {isError && <div>{isError}</div>}
                 </div>
                 :
                 <form onSubmit={handleEdit}>
                     <input
+                    className="global-input"
                     name={editInput}
                     value={editInput}
                     onChange={handleChange}
                     />
-                    <button>Edit</button>
-                    <button onClick={handleEditCancel}>Cancel</button>
+                    <button className="global-btn">Edit</button>
+                    <button className="global-btn" onClick={handleEditCancel}>Cancel</button>
                     {isError && <div>{isError}</div>}
                 </form>
                 }

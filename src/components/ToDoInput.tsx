@@ -1,13 +1,14 @@
 import React, {ChangeEvent, FormEvent, useState} from 'react'
 import ToDoList from '../utils/api/todoListApi'
-// import { ToDoInputProps } from '../interfaces/todo.interface'
+import Tasks from './Tasks'
+import '../styles/globalTodo.css'
 
 const ToDoInput:React.FC = () => {
-    const initTodoInput = {
+    const INIT_TODO_INPUT = {
         input: ''
     }
 
-    const [todoInput, setTodoInput] = useState(initTodoInput)
+    const [todoInput, setTodoInput] = useState(INIT_TODO_INPUT)
     const [isError, setIsError] = useState('')
 
     const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +20,7 @@ const ToDoInput:React.FC = () => {
         e.preventDefault()
         try {
             await ToDoList.postListData(todoInput.input)
-            setTodoInput(initTodoInput)
+            setTodoInput(INIT_TODO_INPUT)
         } catch (error) {
             setIsError(error as string)
         }
@@ -30,16 +31,20 @@ const ToDoInput:React.FC = () => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="Search bar"></label>
                 <input
+                className="global-input"
                 name="input"
                 value={todoInput.input}
                 placeholder="Task"
                 onChange={handleChange}
                 />
-                <button>
+                <button className="global-btn">
                     Submit
                 </button>
             </form>
             {isError && <div>{isError}</div>}
+            <div>
+                <Tasks input={todoInput}/>
+            </div>
         </div>
     )
 }
