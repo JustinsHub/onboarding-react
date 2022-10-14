@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ToDoList from '../utils/api/todoListApi'
+import Task from './Task'
 
 const Tasks:React.FC = () => {  
     const [todoList, setTodoList] = useState([])
@@ -21,9 +22,7 @@ const Tasks:React.FC = () => {
             {todoList.map((todo:any) => {
                 return(
                 <div key={todo.id}>
-                    {todo.title}
-                    <button>Edit</button>
-                    <button>Delete</button>
+                   <Task id={todo.id} title={todo.title}/>
                 </div>
                 )
             })}
