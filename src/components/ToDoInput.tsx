@@ -1,6 +1,5 @@
 import React, {ChangeEvent, FormEvent, useState} from 'react'
 import ToDoList from '../utils/api/todoListApi'
-import Tasks from './Tasks'
 import '../styles/globalTodo.css'
 
 const ToDoInput:React.FC = () => {
@@ -37,14 +36,11 @@ const ToDoInput:React.FC = () => {
                 placeholder="Task"
                 onChange={handleChange}
                 />
-                <button className="global-btn">
+            <button className="global-btn">
                     Submit
                 </button>
             </form>
             {isError && <div>{isError}</div>}
-            <div>
-                <Tasks input={todoInput}/>
-            </div>
         </div>
     )
 }

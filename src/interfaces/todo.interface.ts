@@ -2,7 +2,7 @@ export interface ToDoInputProps {
     handleSubmit: any
 }
 export interface TasksProps {
-    input:any
+    todoList: any
 }
 
 export interface TaskProps {

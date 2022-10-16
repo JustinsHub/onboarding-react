@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { TaskProps } from '../interfaces/todo.interface'
 import ToDoList from '../utils/api/todoListApi'
 import '../styles/globalTodo.css'
@@ -7,16 +7,15 @@ import '../styles/tasks.css'
 
 const Task:React.FC<TaskProps> = ({id, title}) => {
 
-
     const [editInput, setEditInput] = useState(title)
     const [editToggle, setEditToggle] = useState(true)
     const [isError, setIsError] = useState('')
+
 
     const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target
         setEditInput(value)
     }
-
 
     const handleEdit = async(e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
